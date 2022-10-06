@@ -36,7 +36,7 @@ namespace TikToken.Services
             {
                 _context.User!.Add(user);
                 await _context.SaveChangesAsync();
-                return Int32.Parse(_context.User.Where(user => user.UserName == newUser.UserName).FirstOrDefault()!.Id.ToString());
+                return user.Id;
             }
             catch (Exception ex)
             {
