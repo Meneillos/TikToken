@@ -1,0 +1,24 @@
+_id: req_wrk_d6736146fed5416787ace5afea8b0a8aa14f983a
+type: Request
+parentId: wrk_d6736146fed5416787ace5afea8b0a8a
+modified: 1664992421536
+created: 1664990624974
+url: "{{ base_url }}/api/User"
+name: /api/User
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication:
+  type: bearer
+  token: "{% dotenv 'D:\\\\Repos\\\\TikToken\\\\.insomnia\\\\.env', 'token' %}"
+  prefix: ""
+metaSortKey: -1664990624974
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

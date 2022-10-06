@@ -25,18 +25,15 @@ namespace TikToken.Services
         {
             if (UserExists(newUser.UserName!) || EmailExists(newUser.Email!)) return -1;
             var hmac = new HMACSHA512();
-            User user = new()
-            {
-                UserName = newUser.UserName,
-                Email = newUser.Email,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(newUser.Password!)),
-                PasswordSalt = hmac.Key
-            };
+            User user = new(newUser.UserName!, 
+                            newUser.Email!, 
+                            hmac.ComputeHash(Encoding.UTF8.GetBytes(newUser.Password!)), 
+                            hmac.Key);
             try
             {
                 _context.User!.Add(user);
                 await _context.SaveChangesAsync();
-                return Int32.Parse(_context.User.Where(user => user.UserName == newUser.UserName).FirstOrDefault()!.Id.ToString());
+                return user.Id;
             }
             catch (Exception ex)
             {
