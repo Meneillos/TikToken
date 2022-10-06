@@ -60,7 +60,7 @@ namespace TikToken.Services
 
         private bool EmailExists(string mail)
         {
-            return _context.User!.Where(u => u.UserName == mail).Any();
+            return _context.User!.Where(u => u.Email == mail).Any();
         }
     }
 }
